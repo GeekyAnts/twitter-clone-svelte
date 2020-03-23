@@ -7,7 +7,6 @@
   import IoIosHeartEmpty from "svelte-icons/io/IoIosHeartEmpty.svelte";
 
   import { tweets } from "../store.js";
-  export let tweet;
 </script>
 
 <style>
@@ -50,9 +49,14 @@
   .repeat {
     transform: rotate(90deg);
   }
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+  }
 </style>
 
-{#each tweet as tweet}
+{#each $tweets as tweet}
   <div class="card-container">
     <Image src={tweet.user.avatar} type="profile" alt="profile" />
     <div class="content">
@@ -72,18 +76,18 @@
         {/if}
       </div>
       <div class="footer">
-        <div class="icon">
+        <button on:click={() => {}} class="icon">
           <GoComment />
-        </div>
-        <div class="icon">
+        </button>
+        <button on:click={() => {}} class="icon">
           <IoIosHeartEmpty />
-        </div>
-        <div class="icon repeat">
+        </button>
+        <button on:click={() => {}} class="icon repeat">
           <MdRepeat />
-        </div>
-        <div class="icon">
+        </button>
+        <button on:click={() => {}} class="icon">
           <MdArrowUpward />
-        </div>
+        </button>
       </div>
     </div>
   </div>

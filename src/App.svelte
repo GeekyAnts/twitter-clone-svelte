@@ -10,7 +10,7 @@
   async function getTweets() {
     const response = await fetch("http://localhost:3000/tweets");
     const tweet = await response.json();
-    tweets.set(tweet);
+    tweets.set(tweet.reverse());
     if (response.ok) {
       return tweet;
     } else {
@@ -46,7 +46,7 @@
     <p>Loading...</p>
   {:then mytweets}
     {#if mytweets !== undefined}
-      <Post tweet={mytweets} />
+      <Post />
     {/if}
   {:catch error}
     {error.message}
