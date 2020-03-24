@@ -1,8 +1,49 @@
 <script>
   import Image from "./Image.svelte";
+  import { tweets } from "../store.js";
+  import faker from "faker";
 
   let userFeed;
+  let user = {
+    name: "Geekyants",
+    username: "geekyants",
+    avatar: "user.jpeg",
+    cover: "favicon.png",
+    bio: "Svelte Developer",
+    location: "Delhi",
+    following: 3,
+    followers: 10
+  };
   let placeholder = "What's happening?";
+  let payload;
+  async function tweetPost() {
+    payload = {
+      id: faker.random.number(100000),
+      user: user,
+      time: new Date().toISOString(),
+      tweetContent: userFeed,
+      likes: 0,
+      retweets: 0,
+      replies: 0
+    };
+    userFeed = "";
+    const response = await fetch("http://localhost:3000/tweets", {
+      method: "post",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        tweets.update(tweet => {
+          const mytweet = [payload, ...tweet];
+          return mytweet;
+        });
+      });
+  }
 </script>
 
 <style>
@@ -50,6 +91,6 @@
     <Image src="user.jpeg" alt="User" />
     <input type="text" bind:value={userFeed} {placeholder} />
   </div>
-  <button on:click={() => {}}>Tweet</button>
+  <button on:click={tweetPost}>Tweet</button>
 </div>
 <hr />
