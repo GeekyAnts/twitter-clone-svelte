@@ -4,6 +4,7 @@
   export let height = "50px";
   export let width = "50px";
   export let type;
+  export let className = "";
 </script>
 
 <style>
@@ -16,10 +17,16 @@
     border-radius: 20px;
     border: 1px #ccd6dc;
   }
+  .cover-img {
+    border: none;
+    border-radius: 0;
+  }
 </style>
 
 {#if type === 'content'}
-  <img class="content-img" {src} {alt} {height} {width} />
-{:else}
-  <img class="profile-img" {src} {alt} {height} {width} />
+  <img class="content-img" style={className} {src} {alt} {height} {width} />
+{:else if type === 'cover'}
+  <img class="cover-img" style={className} {src} {alt} {height} {width} />
+{:else if (type = 'avatar')}
+  <img class="profile-img " style={className} {src} {alt} {height} {width} />
 {/if}

@@ -3,12 +3,12 @@
   import { tweets } from "../store.js";
   import faker from "faker";
 
-  let userFeed;
+  let userFeed = "";
   let user = {
     name: "Geekyants",
     username: "geekyants",
     avatar: "user.jpeg",
-    cover: "favicon.png",
+    cover: "",
     bio: "Svelte Developer",
     location: "Delhi",
     following: 3,
@@ -37,7 +37,6 @@
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         tweets.update(tweet => {
           const mytweet = [payload, ...tweet];
           return mytweet;
@@ -52,6 +51,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 2em;
   }
   .inner {
     width: 600px;
@@ -64,12 +64,17 @@
     outline: 0;
     border: none;
   }
+  input {
+    font-size: 20px;
+  }
   input::placeholder {
     font-size: 20px;
     color: #9197a3;
     font-family: Arial, Helvetica, sans-serif;
   }
   button {
+    outline: none;
+    border: none;
     border-radius: 25px;
     background-color: rgb(23, 191, 99);
     padding: 10px;
@@ -77,6 +82,10 @@
     width: 20%;
     margin: 0.25em;
     align-self: flex-end;
+    font-size: 15px;
+  }
+  button:hover {
+    background-color: rgb(24, 207, 107);
   }
   hr {
     background-color: #e6ecf0;
