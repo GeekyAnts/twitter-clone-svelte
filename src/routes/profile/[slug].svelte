@@ -41,6 +41,7 @@
     color: rgb(109, 108, 108);
   }
   button {
+    outline: none;
     border-radius: 25px;
     background-color: rgb(23, 191, 99);
     padding: 10px;

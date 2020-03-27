@@ -8,7 +8,7 @@
     name: "Geekyants",
     username: "geekyants",
     avatar: "user.jpeg",
-    cover: "",
+    cover: "great-success.png",
     bio: "Svelte Developer",
     location: "Delhi",
     following: 3,

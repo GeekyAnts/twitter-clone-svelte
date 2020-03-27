@@ -24,12 +24,13 @@ Alternatively, you can use GitHub's template feature with the [sapper-template-r
 However you get the code, you can install dependencies and run the project in development mode with:
 
 ```bash
-cd my-app
+cd twitter-clone-svelte
 npm install # or yarn
+npm run serve
 npm run dev
 ```
 
-Open up [localhost:3000](http://localhost:3000) and start clicking around.
+Open up [localhost:3001](http://localhost:3001) and start clicking around.
 
 Consult [sapper.svelte.dev](https://sapper.svelte.dev) for help getting started.
 
